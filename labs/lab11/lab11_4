@@ -1,0 +1,10 @@
+#!/bin/bash
+
+while getopts :d: opt;
+do
+case $opt in
+	d)dir="$OPTARG"
+esac
+done
+
+find $dir -mtime -7 -mtime +0 -type f > arch.txt | tar -cf archive_lab11_4.tar -T arch.txt
